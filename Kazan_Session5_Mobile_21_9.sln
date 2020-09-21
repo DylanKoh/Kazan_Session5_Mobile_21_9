@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kazan_Session5_Mobile_21_9.Android", "Kazan_Session5_Mobile_21_9.Android\Kazan_Session5_Mobile_21_9.Android.csproj", "{9E9A7320-C00A-4B7A-AC3F-4BC32529670B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kazan_Session5_Mobile_21_9", "Kazan_Session5_Mobile_21_9\Kazan_Session5_Mobile_21_9.csproj", "{300F3709-78E3-4C2F-B618-E401E01CBC2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E9A7320-C00A-4B7A-AC3F-4BC32529670B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E9A7320-C00A-4B7A-AC3F-4BC32529670B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E9A7320-C00A-4B7A-AC3F-4BC32529670B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9E9A7320-C00A-4B7A-AC3F-4BC32529670B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E9A7320-C00A-4B7A-AC3F-4BC32529670B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E9A7320-C00A-4B7A-AC3F-4BC32529670B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{300F3709-78E3-4C2F-B618-E401E01CBC2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{300F3709-78E3-4C2F-B618-E401E01CBC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{300F3709-78E3-4C2F-B618-E401E01CBC2F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{300F3709-78E3-4C2F-B618-E401E01CBC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{300F3709-78E3-4C2F-B618-E401E01CBC2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{300F3709-78E3-4C2F-B618-E401E01CBC2F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F6D0201-7A23-41D8-8181-1AD2DB18D91D}
+	EndGlobalSection
+EndGlobal
