@@ -109,14 +109,25 @@ namespace Kazan_Session5_Mobile_21_9
 
         }
 
-        private void btnEdit_Clicked(object sender, EventArgs e)
+        private async void btnEdit_Clicked(object sender, EventArgs e)
         {
-
+           
+            if (pWell.SelectedItem != null)
+            {
+                var getWell = (from x in _wellList
+                               where x.WellName == pWell.SelectedItem.ToString()
+                               select x).FirstOrDefault();
+                await Navigation.PushAsync(new WellInformation(getWell.ID));
+            }
+            else
+            {
+                await DisplayAlert("Edit Well", "Please select a Well!", "Ok");
+            }
         }
 
-        private void btnAdd_Clicked(object sender, EventArgs e)
+        private async void btnAdd_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new WellInformation(0));
         }
     }
 }

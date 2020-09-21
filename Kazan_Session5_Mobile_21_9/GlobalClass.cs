@@ -44,5 +44,12 @@ namespace Kazan_Session5_Mobile_21_9
             public int End { get; set; }
         }
 
+        public class LayerView
+        {
+            public string RockName { get; set; }
+            public long StartPoint { get; set; }
+            public long EndPoint { get; set; }
+        }
+
     }
 }

@@ -10,7 +10,7 @@ namespace Kazan_Session5_Mobile_21_9
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

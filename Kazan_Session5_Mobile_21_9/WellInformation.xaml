@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kazan_Session5_Mobile_21_9.WellInformation"
+             Title="Well Information">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Entry Placeholder="Well Name" x:Name="entryWellName"/>
+            <StackLayout Orientation="Horizontal">
+                <Entry Keyboard="Numeric" Placeholder="Depth of Gas or Oil Extraction" x:Name="entryDepth" Completed="entryDepth_Completed" Unfocused="entryDepth_Unfocused"/>
+                <Entry Keyboard="Numeric" Placeholder="Well Capacity" x:Name="entryCapacity"/>
+            </StackLayout>
+            <Label Text="Rock Layers:" />
+            <Picker x:Name="pRockLayers" Title="Rock Layers"/>
+            <StackLayout Orientation="Horizontal">
+                <Entry Keyboard="Numeric" x:Name="entryFrom" Placeholder="From Depth"/>
+                <Entry Keyboard="Numeric" x:Name="entryTo" Placeholder="To Depth"/>
+                <Button Text="Add Layer" x:Name="btnAdd" Clicked="btnAdd_Clicked"/>
+            </StackLayout>
+            <ListView HasUnevenRows="True" x:Name="lvLayers">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5" Orientation="Horizontal">
+                                <StackLayout>
+                                    <Label Text="{Binding RockName}"/>
+                                    <Grid>
+                                        <Label Text="From:"/>
+                                        <Label Text="{Binding StartPoint}" Grid.Column="1"/>
+                                        <Label Text="To:" Grid.Row="1"/>
+                                        <Label Text="{Binding EndPoint}" Grid.Column="1" Grid.Row="1"/>
+                                    </Grid>
+                                </StackLayout>
+                                <Button Text="Remove" x:Name="btnRemove" Clicked="btnRemove_Clicked"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="btnSubmit" Text="Submit" Clicked="btnSubmit_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
