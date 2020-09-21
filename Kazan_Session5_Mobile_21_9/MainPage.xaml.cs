@@ -2,10 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using static Kazan_Session5_Mobile_21_9.GlobalClass;
 
@@ -15,27 +18,73 @@ namespace Kazan_Session5_Mobile_21_9
     {
         List<Well> _wellList;
         List<GridView> _viewList;
+        bool isConnected = true;
         public MainPage()
         {
             InitializeComponent();
         }
+
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            checkConnectivity();
             await LoadPicker();
+            
+        }
+
+        private void checkConnectivity()
+        {
+            try
+            {
+                checkNetwork();
+                Timer timer = new Timer(
+                (e)
+               =>
+                { MainThread.BeginInvokeOnMainThread(new Action(checkNetwork)); }, null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        private void checkNetwork()
+        {
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                isConnected = true;
+                Title = "Connected to DataBase";
+            }
+            else if (Connectivity.NetworkAccess == NetworkAccess.None)
+            {
+                isConnected = false;
+                Title = "Disconnected to DataBase";
+            }
         }
 
         private async Task LoadPicker()
         {
             pWell.Items.Clear();
             stackView.Children.Clear();
-            var client = new WebApi();
-            var wellResponse = await client.PostAsync(null, "Wells");
-            _wellList = JsonConvert.DeserializeObject<List<Well>>(wellResponse);
+            if (isConnected == true)
+            {
+                var client = new WebApi();
+                var wellResponse = await client.PostAsync(null, "Wells");
+                _wellList = JsonConvert.DeserializeObject<List<Well>>(wellResponse);
+                File.WriteAllText(FileSystem.AppDataDirectory + "/wellPicker.txt", wellResponse);
+                
+            }
+            else
+            {
+                _wellList = JsonConvert.DeserializeObject<List<Well>>(File.ReadAllText(FileSystem.AppDataDirectory + "/wellPicker.txt"));
+            }
             foreach (var item in _wellList)
             {
                 pWell.Items.Add(item.WellName);
             }
+
         }
 
         private async void pWell_SelectedIndexChanged(object sender, EventArgs e)
@@ -111,7 +160,7 @@ namespace Kazan_Session5_Mobile_21_9
 
         private async void btnEdit_Clicked(object sender, EventArgs e)
         {
-           
+
             if (pWell.SelectedItem != null)
             {
                 var getWell = (from x in _wellList
