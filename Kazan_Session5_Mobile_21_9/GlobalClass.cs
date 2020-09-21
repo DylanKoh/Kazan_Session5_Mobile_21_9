@@ -34,5 +34,15 @@ namespace Kazan_Session5_Mobile_21_9
             public long ID { get; set; }
             public string Name { get; set; }
         }
+
+
+        public class GridView
+        {
+            public string RockName { get; set; }
+            public string BackgroundColour { get; set; }
+            public int Start { get; set; }
+            public int End { get; set; }
+        }
+
     }
 }
